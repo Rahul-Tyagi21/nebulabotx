@@ -48,13 +48,13 @@ if UPSTREAM_REPO is not None:
         srun(["rm", "-rf", ".git"])
 
     update = srun([f"git init -q \
-                     && git config --global user.email e.anastayyar@gmail.com \
+&& git config --global user.email e.anastayyar@gmail.com \
                      && git config --global user.name mltb \
                      && git add . \
                      && git commit -sm update -q \
-                     && git remote add origin https://Rahul-Tyagi21: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@github.com/Rahul-Tyagi21/nebulabotx \
+                     && git remote add origin {UPSTREAM_REPO} \
                      && git fetch origin -q \
-                     && git reset --hard origin/master -q"], shell=True)
+                     && git reset --hard origin/{UPSTREAM_BRANCH} -q"], shell=True)
     if update.returncode == 0:
         log_info('Successfully updated with latest commit from UPSTREAM_REPO')
     else:
